@@ -3,10 +3,17 @@
 SOURCES=$1
 DOCS=".publish-docs/"
 DOCUMENT="${DOCS}/document.md"
+CONTENT="${DOCS}/content.md"
+STYLE="${DOCS}/style.md"
 
-mkdir -p $DOCS && touch $DOCUMENT
+mkdir -p $DOCS && touch $DOCUMENT && touch $CONTENT && touch $STYLE
 
-for file in $SOURCES; do (cat "<div style='break-after: page;'>${file}</div>"; echo) done > $DOCUMENT
+echo "<style>@media print {.pagebreak { page-break-before: always; }}</style>" >> $STYLE
+
+for file in $SOURCES; do (cat "${file}"; echo) done > $CONTENT
+
+cat $STYLE >> $DOCUMENT
+cat $CONTENT >> $DOCUMENT
 
 INPUT_INPUT_DIR=$DOCS \
 INPUT_OUTPUT_DIR=$DOCS \
