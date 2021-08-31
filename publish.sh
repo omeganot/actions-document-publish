@@ -10,7 +10,7 @@ mkdir -p $DOCS && touch $DOCUMENT && touch $CONTENT && touch $STYLE
 
 echo "<style>@media print {.pagebreak { page-break-before: always; }}</style>" >> $STYLE
 
-for file in $SOURCES; do (cat "${file}"; echo) done > $CONTENT
+for file in $SOURCES; do (cat "${file}"; echo "<div class='pagebreak'></div>") done > $CONTENT
 
 cat $STYLE >> $DOCUMENT
 cat $CONTENT >> $DOCUMENT
