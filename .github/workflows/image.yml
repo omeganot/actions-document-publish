@@ -1,6 +1,9 @@
 name: Publish Docker Image
 
-on: [push]
+on: 
+  push:
+  schedule:
+    - cron: '42 1 * * *'
 
 jobs:
   build:
