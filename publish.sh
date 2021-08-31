@@ -6,7 +6,7 @@ DOCUMENT="${DOCS}/document.md"
 
 mkdir -p $DOCS && touch $DOCUMENT
 
-for file in $SOURCES; do (cat "${file}"; echo) done > $DOCUMENT
+for file in $SOURCES; do (cat "<div style='break-after: page;'>${file}</div>"; echo) done > $DOCUMENT
 
 INPUT_INPUT_DIR=$DOCS \
 INPUT_OUTPUT_DIR=$DOCS \
